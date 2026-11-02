@@ -1,0 +1,52 @@
+{
+  "created_at_utc": "2026-10-31T15:36:40.934738+00:00",
+  "source": {
+    "path": "data/halueval_qa_main.json",
+    "sha256": "89ed139ec5e3a3169a0b30e45569ac1283846f76f27f7bb5e908ee6deed57e88"
+  },
+  "output": "derived/features/halueval_full_features.csv",
+  "question_groups": 10000,
+  "examples": 20000,
+  "sampling": {
+    "limit_questions": null,
+    "sample_seed": 11
+  },
+  "models": {
+    "embedding": "sentence-transformers/all-MiniLM-L6-v2",
+    "nli": "facebook/bart-large-mnli"
+  },
+  "inference": {
+    "device": "cuda",
+    "embedding_batch_size": 128,
+    "nli_batch_size": 16,
+    "nli_max_length": 512
+  },
+  "software": {
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "torch": "2.11.0+cu130",
+    "transformers": "4.51.3",
+    "sentence-transformers": "3.4.1"
+  },
+  "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "direct_length_columns": [
+    "answer_len",
+    "evidence_len",
+    "question_len",
+    "answer_evidence_len_ratio"
+  ],
+  "direct_length_excluded_features": [
+    "lexical_overlap",
+    "lexical_mismatch",
+    "jaccard",
+    "semantic_answer_evidence_sim",
+    "semantic_answer_question_sim",
+    "semantic_mismatch",
+    "nli_entailment",
+    "nli_neutral",
+    "nli_contradiction",
+    "nli_unsupported",
+    "uncertainty"
+  ]
+}

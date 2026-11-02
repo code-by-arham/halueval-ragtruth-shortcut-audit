@@ -1,0 +1,19 @@
+{
+  "dataset": {
+    "name": "HaluEval QA",
+    "source_url": "https://raw.githubusercontent.com/RUCAIBox/HaluEval/main/data/qa_data.json",
+    "local_path": "data/halueval_qa_main.json"
+  },
+  "split": {
+    "question_group_ratio": {
+      "train": 0.8,
+      "validation": 0.1,
+      "test": 0.1
+    },
+    "seeds": [11, 22, 33, 44, 55]
+  },
+  "claim_labels": {
+    "direct_length_excluded": "Explicit answer/evidence/question length and ratio columns are excluded. This label does not claim length invariance.",
+    "length_robust": "May be used only after pre-registered matched-length and length-stratified evaluations support it."
+  }
+}

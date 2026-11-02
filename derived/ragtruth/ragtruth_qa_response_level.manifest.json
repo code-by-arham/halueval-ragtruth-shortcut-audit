@@ -1,0 +1,20 @@
+{
+  "task": "RAGTruth QA response-level hallucination detection",
+  "label_definition": "1 iff a retained response has one or more official RAGTruth hallucination-span annotations.",
+  "quality_policy": "good only",
+  "source_hashes": {
+    "responses": "e4c2e4ac24fff676d8984cc61c35d791612fadc58015335d97dd632375e18073",
+    "sources": "0dffc26ea9f3c1c3d7c7e8336b56ef1646e3cec876edffcca3c9c624d12d578b"
+  },
+  "records": 5767,
+  "question_groups": 989,
+  "official_split_counts": {
+    "train": 4892,
+    "test": 875
+  },
+  "label_counts": {
+    "0": 4061,
+    "1": 1706
+  },
+  "important_caveat": "This response-level label discards span location and severity. Report it as a derived response-level evaluation, not as the official token/span metric."
+}

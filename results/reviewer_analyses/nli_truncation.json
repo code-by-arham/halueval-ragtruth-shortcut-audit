@@ -1,0 +1,9 @@
+{
+ "ragtruth_pair_tokens_median": 463.0,
+ "ragtruth_pair_tokens_mean": 473.3176694988729,
+ "ragtruth_frac_over_512": 0.3927518640541009,
+ "ragtruth_test_frac_over_512": 0.352,
+ "halueval_pair_tokens_median": 88.0,
+ "halueval_pair_tokens_mean": 94.10195,
+ "halueval_frac_over_512": 0.0
+}

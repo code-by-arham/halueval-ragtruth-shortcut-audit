@@ -1,0 +1,8 @@
+data/halueval_qa_main.json
+data/RAGTruth/
+derived/ragtruth/ragtruth_qa_response_level.csv
+derived/features/nli_chunks/
+derived/features/halueval_base_semantic.csv
+*.joblib
+__pycache__/
+.venv/
