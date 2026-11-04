@@ -9,3 +9,8 @@ joblib>=1.4
 torch>=2.5
 transformers==4.51.3
 sentence-transformers==3.4.1
+# second revision round (HaluBench + MiniCheck)
+nltk>=3.9
+accelerate>=1.0
+pyarrow>=17
+tqdm>=4.66

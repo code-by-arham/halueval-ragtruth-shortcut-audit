@@ -1,0 +1,81 @@
+{
+ "minicheck_halueval_answer_val_thresholds": {
+  "11": 0.2724660038948059,
+  "22": 0.2598158717155456,
+  "33": 0.2116783261299133,
+  "44": 0.3571841716766357,
+  "55": 0.4734591245651245
+ },
+ "ragtruth_test_minicheck_sentences_median": 5.0,
+ "halubench_same_rows_frozen_gb_seedavg_auc_answer": {
+  "DROP": {
+   "n": 1000,
+   "frozen_gb_auc": 0.566116,
+   "minicheck_auc": 0.5158200000000001
+  },
+  "FinanceBench": {
+   "n": 1000,
+   "frozen_gb_auc": 0.5149060000000001,
+   "minicheck_auc": 0.562484
+  },
+  "covidQA": {
+   "n": 200,
+   "frozen_gb_auc": 0.7275999999999999,
+   "minicheck_auc": 0.9258
+  },
+  "pubmedQA": {
+   "n": 1000,
+   "frozen_gb_auc": 0.6397719999999999,
+   "minicheck_auc": 0.705696
+  },
+  "pooled": {
+   "n": 3200,
+   "frozen_gb_auc": 0.5426748046875,
+   "minicheck_auc": 0.6098154296875
+  }
+ },
+ "halubench_same_rows_frozen_gb_seedavg_auc_qa": {
+  "DROP": {
+   "n": 1000,
+   "frozen_gb_auc": 0.566116,
+   "minicheck_auc": 0.5414
+  },
+  "FinanceBench": {
+   "n": 1000,
+   "frozen_gb_auc": 0.5149060000000001,
+   "minicheck_auc": 0.535952
+  },
+  "pubmedQA": {
+   "n": 1000,
+   "frozen_gb_auc": 0.6397719999999999,
+   "minicheck_auc": 0.7098880000000001
+  },
+  "pooled_excl_covidQA": {
+   "n": 3000,
+   "frozen_gb_auc": 0.534062,
+   "minicheck_auc": 0.588464
+  }
+ },
+ "halubench_answer_vs_qa_claims_auc": {
+  "pooled_excl_covidQA": {
+   "n": 3000,
+   "answer_auc": 0.5925302222222222,
+   "qa_auc": 0.588464
+  },
+  "DROP": {
+   "n": 1000,
+   "answer_auc": 0.5158200000000001,
+   "qa_auc": 0.5414
+  },
+  "FinanceBench": {
+   "n": 1000,
+   "answer_auc": 0.562484,
+   "qa_auc": 0.535952
+  },
+  "pubmedQA": {
+   "n": 1000,
+   "answer_auc": 0.705696,
+   "qa_auc": 0.7098880000000001
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+  "source": "PatronusAI/HaluBench data/test-00000-of-00001.parquet",
+  "sha256": "c7e9cf966085ffae88d2947744418a05a26ea94380c35c238b9fc12ecb874cdc",
+  "licence": "CC BY-NC 2.0",
+  "subsets": [
+    "DROP",
+    "FinanceBench",
+    "covidQA",
+    "pubmedQA"
+  ],
+  "records": 4000,
+  "groups": 2333,
+  "label_counts": {
+    "1": 2000,
+    "0": 2000
+  },
+  "per_subset": {
+    "DROP": {
+      "n": 1000,
+      "hallucinated": 500,
+      "groups": 486
+    },
+    "FinanceBench": {
+      "n": 1000,
+      "hallucinated": 500,
+      "groups": 761
+    },
+    "covidQA": {
+      "n": 1000,
+      "hallucinated": 500,
+      "groups": 86
+    },
+    "pubmedQA": {
+      "n": 1000,
+      "hallucinated": 500,
+      "groups": 1000
+    }
+  }
+}

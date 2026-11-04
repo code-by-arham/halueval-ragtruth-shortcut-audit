@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 # End-to-end reproduction of every number in the paper and in the revision analyses.
 #
-#   bash run_all.sh            # reuse the released feature matrices (minutes, CPU)
-#   bash run_all.sh --extract  # also recompute all features from raw text (GPU recommended;
-#                              # ~2.2 h for HaluEval NLI on a 2-core CPU)
+#   bash run_all.sh              # reuse the released feature matrices and MiniCheck scores (minutes, CPU)
+#   bash run_all.sh --extract    # also recompute all features from raw text (GPU recommended;
+#                                # ~2.2 h for HaluEval NLI on a 2-core CPU)
+#   bash run_all.sh --minicheck  # also recompute all MiniCheck scores (~10 h on 2 CPU threads)
 set -euo pipefail
 cd "$(dirname "$0")"
 PY=${PYTHON:-python}
-EXTRACT=${1:-}
+EXTRACT=""; MINICHECK=""
+for arg in "$@"; do
+  case "$arg" in --extract) EXTRACT=--extract ;; --minicheck) MINICHECK=--minicheck ;; esac
+done
 mkdir -p results/halueval_full results/ragtruth/in_domain results/reviewer_analyses derived/ragtruth derived/features
 
 echo "== 0. Raw data (MIT-licensed upstream sources) =="
@@ -59,4 +63,27 @@ echo "== 6. Revision analyses =="
 $PY analysis/ragtruth_stats.py
 $PY analysis/nli_truncation.py
 $PY analysis/reviewer_analyses.py
+
+echo "== 7. HaluBench external subsets: DROP, FinanceBench, CovidQA, PubMedQA (CC BY-NC 2.0) =="
+mkdir -p halubench/data halubench/features results/halubench/in_domain
+[ -f halubench/data/halubench.parquet ] || curl -sSL -o halubench/data/halubench.parquet \
+  https://huggingface.co/datasets/PatronusAI/HaluBench/resolve/main/data/test-00000-of-00001.parquet
+echo "c7e9cf966085ffae88d2947744418a05a26ea94380c35c238b9fc12ecb874cdc  halubench/data/halubench.parquet" | sha256sum -c -
+$PY scripts/prepare_halubench.py --parquet halubench/data/halubench.parquet \
+    --output halubench/data/halubench_records.csv --splits-dir halubench/splits
+$PY scripts/make_covidqa_subsample.py
+if [ "$EXTRACT" = "--extract" ]; then
+  $PY scripts/extract_records_resumable.py --records halubench/data/halubench_records.csv \
+      --output halubench/features/halubench_features.csv
+fi
+$PY scripts/evaluate_truthguard.py --features halubench/features/halubench_features.csv \
+    --splits-dir halubench/splits --split-pattern "halubench_qa_seed_*_splits.csv" \
+    --output-dir results/halubench/in_domain
+
+echo "== 8. MiniCheck-RoBERTa-Large (atomic-claim fact checker) on HaluEval, RAGTruth and HaluBench =="
+if [ "$MINICHECK" = "--minicheck" ]; then
+  bash scripts/run_minicheck_all.sh   # resumable; rerun to continue after an interruption
+fi
+$PY analysis/new_dataset_analyses.py
+$PY analysis/verify_revision2.py
 echo "All done."

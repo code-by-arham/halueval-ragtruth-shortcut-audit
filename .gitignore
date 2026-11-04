@@ -6,3 +6,7 @@ derived/features/halueval_base_semantic.csv
 *.joblib
 __pycache__/
 .venv/
+halubench/data/halubench.parquet
+halubench/features/halubench_features_base_semantic.csv
+halubench/features/halubench_features_nli_chunks/
+derived/minicheck/*_chunks/

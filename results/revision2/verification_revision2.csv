@@ -1,0 +1,46 @@
+check,recomputed,reported,ok
+HaluBench DROP n,1000.0,1000.0,True
+HaluBench DROP hallucinated,500.0,500.0,True
+HaluBench DROP length AUC,0.4207,0.4207,True
+HaluBench FinanceBench n,1000.0,1000.0,True
+HaluBench FinanceBench hallucinated,500.0,500.0,True
+HaluBench FinanceBench length AUC,0.5281,0.5281,True
+HaluBench covidQA n,1000.0,1000.0,True
+HaluBench covidQA hallucinated,500.0,500.0,True
+HaluBench covidQA length AUC,0.505,0.505,True
+HaluBench pubmedQA n,1000.0,1000.0,True
+HaluBench pubmedQA hallucinated,500.0,500.0,True
+HaluBench pubmedQA length AUC,0.4881,0.4881,True
+HaluBench pooled n,4000.0,4000.0,True
+HaluBench pooled hallucinated,2000.0,2000.0,True
+HaluBench pooled length AUC,0.4894,0.4894,True
+Frozen GB HaluBench DROP AUC,0.5658,0.5658,True
+Frozen GB HaluBench FinanceBench AUC,0.5146,0.5146,True
+Frozen GB HaluBench covidQA AUC,0.7285,0.7285,True
+Frozen GB HaluBench pubmedQA AUC,0.633,0.633,True
+Frozen GB HaluBench pooled AUC,0.5704,0.5704,True
+MiniCheck HaluEval test AUC,0.8954,0.8954,True
+MiniCheck HaluEval test F1@0.5,0.8246,0.8246,True
+MiniCheck HaluEval score-length r,0.529,0.529,True
+MiniCheck RAGTruth test n,875.0,875.0,True
+MiniCheck RAGTruth test AUC,0.853,0.853,True
+MiniCheck RAGTruth test F1@0.5,0.4117,0.4117,True
+Same-rows DROP n,1000.0,1000.0,True
+Same-rows DROP MiniCheck AUC,0.5158,0.5158,True
+Same-rows DROP frozen GB AUC,0.5661,0.5661,True
+Same-rows FinanceBench n,1000.0,1000.0,True
+Same-rows FinanceBench MiniCheck AUC,0.5625,0.5625,True
+Same-rows FinanceBench frozen GB AUC,0.5149,0.5149,True
+Same-rows covidQA n,200.0,200.0,True
+Same-rows covidQA MiniCheck AUC,0.9258,0.9258,True
+Same-rows covidQA frozen GB AUC,0.7276,0.7276,True
+Same-rows pubmedQA n,1000.0,1000.0,True
+Same-rows pubmedQA MiniCheck AUC,0.7057,0.7057,True
+Same-rows pubmedQA frozen GB AUC,0.6398,0.6398,True
+Same-rows pooled n,3200.0,3200.0,True
+Same-rows pooled MiniCheck AUC,0.6098,0.6098,True
+Same-rows pooled frozen GB AUC,0.5427,0.5427,True
+HaluBench q+a claims pooled_excl_covidQA AUC,0.5885,0.5885,True
+HaluBench q+a claims DROP AUC,0.5414,0.5414,True
+HaluBench q+a claims FinanceBench AUC,0.536,0.536,True
+HaluBench q+a claims pubmedQA AUC,0.7099,0.7099,True
