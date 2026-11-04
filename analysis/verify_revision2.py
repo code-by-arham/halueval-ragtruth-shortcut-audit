@@ -86,6 +86,17 @@ if "halubench_answer_vs_qa_claims_auc" in V:
     for sub, d in [("pooled_excl_covidQA", Q)] + [(s, Q[Q.source_ds == s]) for s in ["DROP", "FinanceBench", "pubmedQA"]]:
         chk(f"HaluBench q+a claims {sub} AUC", roc_auc_score(d.label, d.minicheck_halluc_score), V["halubench_answer_vs_qa_claims_auc"][sub]["qa_auc"])
 
+if (MC / "halueval_minicheck_qa.csv").exists():
+    mq = pd.read_csv(MC / "halueval_minicheck_qa.csv")
+    Hq = H[["question_id", "variant", "label"]].merge(mq[["question_id", "variant", "minicheck_halluc_score"]], on=["question_id", "variant"])
+    sq = pd.read_csv(OUT / "minicheck_halueval_qa_summary.csv").set_index("threshold_rule")
+    a = []
+    for s in SEEDS:
+        sp = pd.read_csv(R / f"derived/split_manifests/halueval_qa_seed_{s}_splits.csv")
+        te = Hq.merge(sp[sp.split == "test"][["question_id", "variant"]], on=["question_id", "variant"])
+        a.append(roc_auc_score(te.label, te.minicheck_halluc_score))
+    chk("MiniCheck HaluEval q+a claims test AUC", np.mean(a), sq.loc["default_0.5", "roc_auc_mean"])
+
 c = pd.DataFrame(checks)
 c.to_csv(OUT / "verification_revision2.csv", index=False)
 print(c.to_string(index=False))

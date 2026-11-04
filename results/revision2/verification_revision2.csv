@@ -44,3 +44,4 @@ HaluBench q+a claims pooled_excl_covidQA AUC,0.5885,0.5885,True
 HaluBench q+a claims DROP AUC,0.5414,0.5414,True
 HaluBench q+a claims FinanceBench AUC,0.536,0.536,True
 HaluBench q+a claims pubmedQA AUC,0.7099,0.7099,True
+MiniCheck HaluEval q+a claims test AUC,0.7338,0.7338,True

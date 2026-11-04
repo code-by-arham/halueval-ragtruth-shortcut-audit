@@ -6,6 +6,13 @@
   "44": 0.3571841716766357,
   "55": 0.4734591245651245
  },
+ "minicheck_halueval_qa_val_thresholds": {
+  "11": 0.3435764908790588,
+  "22": 0.463153064250946,
+  "33": 0.3793960809707641,
+  "44": 0.6108695268630981,
+  "55": 0.6444594264030457
+ },
  "ragtruth_test_minicheck_sentences_median": 5.0,
  "halubench_same_rows_frozen_gb_seedavg_auc_answer": {
   "DROP": {

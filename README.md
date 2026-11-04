@@ -98,7 +98,7 @@ bash run_all.sh --minicheck  # also recomputes all MiniCheck scores (~10 h on 2 
 | RAGTruth QA official test (n = 875) | 0.853 | 0.412 |
 | HaluBench pooled (n = 3,200; same rows as frozen GB = 0.543) | 0.610 | n/a |
 
-**Claim format.** DROP and FinanceBench answers are often very short (for example "2"). Rewriting each claim as question + answer changes little: on the same 3,000 non-CovidQA rows, AUC goes from 0.593 to 0.588 pooled, 0.516 to 0.541 on DROP, 0.562 to 0.536 on FinanceBench, and 0.706 to 0.710 on PubMedQA.
+**Claim format.** DROP and FinanceBench answers are often very short (for example "2"). Rewriting each claim as question + answer changes little: on the same 3,000 non-CovidQA rows, AUC goes from 0.593 to 0.588 pooled, 0.516 to 0.541 on DROP, 0.562 to 0.536 on FinanceBench, and 0.706 to 0.710 on PubMedQA. On the HaluEval QA test splits the question + answer format is clearly worse: AUC drops from 0.895 to 0.734, and 77% of answers are predicted hallucinated. Answer-only claims are therefore the main setting.
 
 **CovidQA subsample.** CovidQA passages average about 2,600 words, roughly 9 MiniCheck chunks per claim. MiniCheck is therefore run on a fixed stratified random subsample of 200 CovidQA rows (100 per label, `numpy.random.default_rng(11)`), produced by `scripts/make_covidqa_subsample.py`. The selection does not depend on any model score. Frozen GB AUC is 0.728 on these 200 rows and 0.729 on all 1,000.
 
